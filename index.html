@@ -1,94 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PixelPlay Games — Inicio</title>
-<link rel="stylesheet" href="CSS/styles.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<body>
-  
-<header class="container header">
-  <div class="brand">PixelPlay Games</div>
-  <nav class="nav">
-    <a href="index.html" aria-label="Ir al inicio">Inicio</a>
-    <a href="categoria-accion.html">Acción</a>
+  <head>
+    <meta charset="UTF-8">
+    <title>PixelPlay Games — Inicio</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+  <body>
+    <header class="container header">
+      <div class="brand">PixelPlay Games</div>
+      <nav class="nav">
+        <a href="index.html" class="badge">Inicio</a>
+        <a href="categoria-accion.html">Acción</a>
         <a href="categoria-aventura.html">Aventura</a>
         <a href="categoria-deportes.html">Deportes</a>
         <a href="categoria-carreras.html">Carreras</a>
         <a href="categoria-indie.html">Indie</a>
-  </nav>
-</header>
+      </nav>
+    </header>
 
-  
-<section class="container hero">
-  <h1 style="margin:0 0 8px">Catálogo de videojuegos</h1>
-  <p class="small">Explora por categoría y descubre títulos destacados.</p>
-</section>
+    <section class="container hero">
+      <h1 class="h3 mb-1">Catálogo por categorías</h1>
+      <p class="small">falta rellenar esta zona.</p>
+    </section>
 
-  <main class="container">
-    <div class="grid">
-      
-  <article class="card">
-    <a class="thumb" href="categoria-accion.html" aria-label="Abrir categoría Acción">
-      <img src="img/cyberpunk.jpg" alt="Imagen categoría Acción">
-    </a>
-    <div class="content">
-      <h3>Acción</h3>
-      <p>Explora los juegos de acción disponibles.</p>
-      <div><a class="badge" href="categoria-accion.html">Ver categoría</a></div>
-    </div>
-  </article>
+    <main class="container">
+      <div class="grid">
+        <article class="card">
+          <div class="thumb"><img src="img/gta-v.jpg" alt="Acción"></div>
+          <div class="content">
+            <h3>Acción</h3>
+            <p>Combate y misiones intensas.</p>
+            <div class="price"><a href="categoria-accion.html" class="badge">Ver →</a></div>
+          </div>
+        </article>
 
-  <article class="card">
-    <a class="thumb" href="categoria-aventura.html" aria-label="Abrir categoría Aventura">
-      <img src="img/red-dead-2.jpg" alt="Imagen categoría Aventura">
-    </a>
-    <div class="content">
-      <h3>Aventura</h3>
-      <p>Explora los juegos de aventura disponibles.</p>
-      <div><a class="badge" href="categoria-aventura.html">Ver categoría</a></div>
-    </div>
-  </article>
+        <article class="card">
+          <div class="thumb"><img src="img/red-dead-2.jpg" alt="Aventura"></div>
+          <div class="content">
+            <h3>Aventura</h3>
+            <p>Historias y exploración.</p>
+            <div class="price"><a href="categoria-aventura.html" class="badge">Ver →</a></div>
+          </div>
+        </article>
 
-  <article class="card">
-    <a class="thumb" href="categoria-deportes.html" aria-label="Abrir categoría Deportes">
-      <img src="img/eafc25.jpg" alt="Imagen categoría Deportes">
-    </a>
-    <div class="content">
-      <h3>Deportes</h3>
-      <p>Explora los juegos de deportes disponibles.</p>
-      <div><a class="badge" href="categoria-deportes.html">Ver categoría</a></div>
-    </div>
-  </article>
+        <article class="card">
+          <div class="thumb"><img src="img/eafc25.jpg" alt="Deportes"></div>
+          <div class="content">
+            <h3>Deportes</h3>
+            <p>Fútbol, básquet y más.</p>
+            <div class="price"><a href="categoria-deportes.html" class="badge">Ver →</a></div>
+          </div>
+        </article>
 
-  <article class="card">
-    <a class="thumb" href="categoria-carreras.html" aria-label="Abrir categoría Carreras">
-      <img src="img/forza-horizon-5.png" alt="Imagen categoría Carreras">
-    </a>
-    <div class="content">
-      <h3>Carreras</h3>
-      <p>Explora los juegos de carreras disponibles.</p>
-      <div><a class="badge" href="categoria-carreras.html">Ver categoría</a></div>
-    </div>
-  </article>
+        <article class="card">
+          <div class="thumb"><img src="img/forza-horizon-5.png" alt="Carreras"></div>
+          <div class="content">
+            <h3>Carreras</h3>
+            <p>Arcade y simulación.</p>
+            <div class="price"><a href="categoria-carreras.html" class="badge">Ver →</a></div>
+          </div>
+        </article>
 
-  <article class="card">
-    <a class="thumb" href="categoria-indie.html" aria-label="Abrir categoría Indie">
-      <img src="img/stardew-valley.webp" alt="Imagen categoría Indie">
-    </a>
-    <div class="content">
-      <h3>Indie</h3>
-      <p>Explora los juegos de indie disponibles.</p>
-      <div><a class="badge" href="categoria-indie.html">Ver categoría</a></div>
-    </div>
-  </article>
+        <article class="card">
+          <div class="thumb"><img src="img/stardew-valley.webp" alt="Indie"></div>
+          <div class="content">
+            <h3>Indie</h3>
+            <p>Creatividad y propuestas únicas.</p>
+            <div class="price"><a href="categoria-indie.html" class="badge">Ver →</a></div>
+          </div>
+        </article>
+      </div>
+    </main>
 
-    </div>
-  </main>
-  
-<footer class="container footer">
-  <div>© 2025 PixelPlay Games — Sitio demostrativo para actividad PGY3221.</div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+    <footer class="container footer">
+      <div>© 2025 PixelPlay Games .</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="validaciones.js" defer></script>
+  </body>
 </html>

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Recuperar contraseña</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <script src="validaciones.js" defer></script>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   </head>
-  <body class="container py-5">
-    <h2 class="mb-4 text-center">Recuperar contraseña</h2>
-    <form id="formRecuperar" class="needs-validation" novalidate>
-      <div class="mb-3">
-        <label for="emailRecuperar" class="form-label">Correo</label>
-        <input type="email" class="form-control" id="emailRecuperar" required>
-        <div class="invalid-feedback">Ingrese un correo valido.</div>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Enviar instrucciones</button>
+  <body class="bg-custom text-dark container py-5">
+    <h1 class="h4 mb-3 text-center text-primary">Recuperar contraseña</h1>
+
+    <form id="formRecuperar" class="needs-validation text-dark" novalidate>
+      <label for="recEmail" class="form-label">Correo</label>
+      <input type="email" class="form-control" id="recEmail" required autocomplete="email">
+      <div class="invalid-feedback">Ingresa el correo asociado a tu cuenta.</div>
+      <button class="btn btn-primary mt-3 w-100" type="submit">Enviar enlace</button>
     </form>
-    <p class="mt-3 text-center">
-      <a href="login.html">¿Ya tienes una cuenta? Iniciar sesión</a>
+
+    <p class="mt-3 text-center text-primary">
+      <a href="login.html">Volver al login</a>
     </p>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="validaciones.js" defer></script>
   </body>
+</html>
