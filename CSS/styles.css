@@ -1,4 +1,3 @@
-
 :root{
   --bg:#0f172a;          /* slate-900 */
   --panel:#111827;       /* gray-900 */
@@ -107,3 +106,15 @@ img{max-width:100%; display:block}
 }
 .small{ font-size:13px; color:var(--muted) }
 .badge{ padding:2px 8px; border:1px solid rgba(255,255,255,.10); border-radius:999px; font-size:12px }
+
+.bg-custom {
+  background-color: #0f172a;
+}
+
+.img-fixed {
+  width: 450px;
+  height: 650px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
