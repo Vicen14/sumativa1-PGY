@@ -1,59 +1,68 @@
 <!doctype html>
 <html lang="es">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PixelPlay Games — Acción</title>
-<link rel="stylesheet" href="CSS/styles.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<body class="bg-custom text-dark">
-  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PixelPlay Games — Acción</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="bg-custom">
+
 <header class="container header bg-custom text-primary mb-4">
-  <div class="brand">PixelPlay Games</div>
+  <div class="brand fw-bold">PixelPlay Games</div>
   <nav class="nav">
     <a href="index.html" aria-label="Ir al inicio">Inicio</a>
-    <a href="categoria-accion.html" class="badge">Acción</a>
-        <a href="categoria-aventura.html">Aventura</a>
-        <a href="categoria-deportes.html">Deportes</a>
-        <a href="categoria-carreras.html">Carreras</a>
-        <a href="categoria-indie.html">Indie</a>
+    <a href="categoria-accion.html" class="badge bg-primary text-white">Acción</a>
+    <a href="categoria-aventura.html">Aventura</a>
+    <a href="categoria-deportes.html">Deportes</a>
+    <a href="categoria-carreras.html">Carreras</a>
+    <a href="categoria-indie.html">Indie</a>
   </nav>
 </header>
 
-  
 <section class="container hero text-white">
   <h1 style="margin:0 0 8px">Acción</h1>
-  <p class="small">Página de categoría Acción.</p>
+  <p class="small">Explora nuestra selección de juegos de acción llenos de adrenalina.</p>
 </section>
 
-  <main class="container">
-    <div class="grid">
-      
-      <article class="card bg-custom text-dark border-0">
-        <div class="thumb">
+<main class="container">
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <article class="category-card">
+        <div class="category-thumb">
           <img src="img/elden-ring.jpg" alt="Portada del juego Elden Ring">
         </div>
-        <div class="content">
+        <div class="category-content">
           <h3>Elden Ring</h3>
           <p>Juego de rol de acción conocido por su elevada dificultad y gran mapa explorable.</p>
           <div class="price">$59.990</div>
         </div>
       </article>
+    </div>
     
-      <article class="card bg-custom text-dark border-0">
-        <div class="thumb">
+    <div class="col-md-6 mb-4">
+      <article class="category-card">
+        <div class="category-thumb">
           <img src="img/cyberpunk.jpg" alt="Portada del juego Cyberpunk 2077">
         </div>
-        <div class="content">
+        <div class="category-content">
           <h3>Cyberpunk 2077</h3>
-          <p>Juego de acción y mundo abierto basado en un futuro distopico donde juegas como V, un mercenario que se enfrenta a un gran problema luego de una misión que terminó mal.</p>
+          <p>Juego de acción y mundo abierto basado en un futuro distópico donde juegas como V, un mercenario.</p>
           <div class="price">$24.990</div>
         </div>
       </article>
-    
     </div>
-  </main>
-  <div class="container" style="display:flex; justify-content:space-between; margin-top:10px;"><span></span><a class="badge" href="categoria-aventura.html">Aventura →</a></div>
-  
+  </div>
+</main>
+
+<div class="container navigation-links">
+  <div class="d-flex justify-content-between mt-4">
+    <span></span>
+    <a class="badge" href="categoria-aventura.html">Siguiente: Aventura →</a>
+  </div>
+</div>
+
 <footer class="container footer bg-custom text-primary mt-4">
   <div>© 2025 PixelPlay Games — Sitio demostrativo para actividad PGY3221.</div>
 </footer>
