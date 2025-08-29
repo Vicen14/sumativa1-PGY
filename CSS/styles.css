@@ -449,3 +449,160 @@ img{max-width:100%; display:block}
     display: none !important;
   }
 }
+
+
+
+
+
+
+
+
+
+
+#ppg-cart-page {
+  color: #f5f7fb; /* texto claro por defecto */
+}
+
+/* Encabezado con logo */
+#ppg-cart-page .ppg-cart-header {
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding-bottom: .5rem;
+}
+#ppg-cart-page .ppg-logo {
+  height: 42px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+  transition: transform .15s ease, filter .15s ease;
+}
+#ppg-cart-page .ppg-brand:hover .ppg-logo {
+  transform: translateY(-1px) scale(1.02);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.45));
+}
+#ppg-cart-page h1 {
+  color: #6aa8ff; /* azul más visible */
+  font-weight: 800;
+}
+
+/* Tabla */
+#ppg-cart-page #ppg-cart-table {
+  color: #e9ecf3;
+  border-collapse: separate;
+  border-spacing: 0 8px; /* filas separadas estilo "cards" */
+}
+#ppg-cart-page #ppg-cart-table thead th {
+  color: #cbd6ee;
+  font-weight: 700;
+  border: none !important;
+  padding-bottom: .25rem;
+}
+#ppg-cart-page #ppg-cart-table tbody tr {
+  background: rgba(255,255,255,.04);
+  border-radius: 12px;
+  overflow: hidden; /* respeta border-radius visual */
+}
+#ppg-cart-page #ppg-cart-table tbody tr:hover {
+  background: rgba(255,255,255,.06);
+}
+#ppg-cart-page #ppg-cart-table td,
+#ppg-cart-page #ppg-cart-table th {
+  border: none !important;
+  vertical-align: middle;
+}
+#ppg-cart-page #ppg-cart-table td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+#ppg-cart-page #ppg-cart-table td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+#ppg-cart-page #ppg-cart-table strong,
+#ppg-cart-page #ppg-cart-table small {
+  color: #f5f7fb;
+}
+
+/* Imagen de producto en la tabla */
+#ppg-cart-page #ppg-cart-table img {
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.3);
+}
+
+/* Input de cantidad */
+#ppg-cart-page input[type="number"] {
+  background: #101826;
+  color: #f5f7fb;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 10px;
+}
+#ppg-cart-page input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13,110,253,.25);
+  border-color: #6aa8ff;
+}
+
+/* Botón eliminar (la X) */
+#ppg-cart-page .ppg-del {
+  background: #dc3545 !important;
+  border-radius: 10px !important;
+  transition: transform .12s ease, opacity .12s ease;
+}
+#ppg-cart-page .ppg-del:hover {
+  transform: scale(1.05);
+  opacity: .95;
+}
+
+/* Vaciar carrito y total */
+#ppg-cart-page #ppg-clear-cart {
+  border-radius: 10px;
+}
+#ppg-cart-page #ppg-cart-total {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* Alert vacío */
+#ppg-cart-page #ppg-cart-empty {
+  color: #0b1322;
+  background: #e9f2ff;
+  border: 1px solid #b6d3ff;
+}
+
+/* Botón “Ir a pagar” */
+#ppg-cart-page .btn-success {
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 576px) {
+  #ppg-cart-page #ppg-cart-table td:first-child {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+  }
+}
+
+
+.navbar-brand img {
+  height: 48px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
+  transition: transform .15s ease, filter .15s ease;
+}
+
+/* Logo global arriba-izquierda */
+.brand .ppg-logo,
+.ppg-logo {
+  height: 44px;   /* ajusta a tu gusto */
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+  transition: transform .15s ease, filter .15s ease, opacity .15s ease;
+}
+.brand:hover .ppg-logo {
+  transform: translateY(-1px) scale(1.02);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.45));
+  opacity: .95;
+}
