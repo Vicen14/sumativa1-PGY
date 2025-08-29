@@ -74,12 +74,22 @@ img{max-width:100%; display:block}
 }
 
 .card{
-  background:var(--panel);
-  border:1px solid rgba(255,255,255,.06);
+  background: var(--bg);
+  color: #fff;
+  border: none;
   border-radius:var(--radius);
   overflow:hidden;
   box-shadow: var(--shadow);
   display:flex; flex-direction:column;
+  width:100%;
+}
+
+/* Equiparar ancho a col-md-4 en pantallas medianas y mayores */
+@media (min-width: px) {
+  .card{
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
 }
 
 .card .thumb{
