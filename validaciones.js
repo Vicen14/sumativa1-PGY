@@ -6,6 +6,29 @@
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
+  // Inicializar datos de ejemplo si no existen
+  if (!localStorage.getItem('usuarios')) {
+    const usuariosEjemplo = [
+      {
+        id: 1,
+        nombre: 'Administrador Principal',
+        email: 'admin@pixelplay.com',
+        password: 'Admin123!',
+        rol: 'administrador',
+        fechaRegistro: new Date().toLocaleDateString()
+      },
+      {
+        id: 2,
+        nombre: 'Cliente Ejemplo',
+        email: 'cliente@ejemplo.com',
+        password: 'Cliente123!',
+        rol: 'cliente',
+        fechaRegistro: new Date().toLocaleDateString()
+      }
+    ];
+    localStorage.setItem('usuarios', JSON.stringify(usuariosEjemplo));
+  }
+
   // Seleccionar todos los formularios que necesitan validación
   const forms = document.querySelectorAll('.needs-validation');
 
@@ -84,16 +107,19 @@
 
       // Si el formulario es válido, se puede proceder con el envío (simulado aquí)
       if (isFormValid) {
-        console.log('El formulario es válido y está listo para ser enviado.');
-        // Aquí iría la lógica para enviar los datos al servidor.
-        // Por ahora, mostraremos una alerta de éxito.
-        alert('¡Formulario enviado con éxito!');
-        // Opcionalmente, se podría resetear el formulario: form.reset();
-        // y quitar las clases de validación
-        form.classList.remove('was-validated');
-        inputs.forEach(input => {
-            input.classList.remove('is-valid', 'is-invalid');
-        });
+        // Manejar el envío según el tipo de formulario
+        if (form.id === 'formlogin') {
+          handleLogin(form);
+        } else if (form.id === 'formRegistro') {
+          handleRegistro(form);
+        } else if (form.id === 'formPerfil') {
+          handlePerfil(form);
+        } else if (form.id === 'formRecuperar') {
+          handleRecuperar(form);
+        } else {
+          console.log('El formulario es válido y está listo para ser enviado.');
+          alert('¡Formulario enviado con éxito!');
+        }
       } else {
          console.log('El formulario contiene errores.');
       }
@@ -102,4 +128,97 @@
       form.classList.add('was-validated');
     }, false);
   });
+
+  // Función para manejar el inicio de sesión
+  function handleLogin(form) {
+    const email = form.querySelector('#emailLogin').value;
+    const password = form.querySelector('#passwordLogin').value;
+    
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuario = usuarios.find(u => u.email === email && u.password === password);
+    
+    if (usuario) {
+      // Guardar usuario en sesión
+      localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+      alert(`¡Bienvenido ${usuario.nombre}!`);
+      window.location.href = 'index.html';
+    } else {
+      alert('Credenciales incorrectas. Por favor, intente nuevamente.');
+    }
+  }
+
+  // Función para manejar el registro
+  function handleRegistro(form) {
+    const nombre = form.querySelector('#nombre').value;
+    const email = form.querySelector('#email').value;
+    const password = form.querySelector('#password').value;
+    
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    
+    // Verificar si el email ya existe
+    if (usuarios.some(u => u.email === email)) {
+      alert('Este correo electrónico ya está registrado.');
+      return;
+    }
+    
+    // Crear nuevo usuario (por defecto como cliente)
+    const nuevoUsuario = {
+      id: usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1,
+      nombre,
+      email,
+      password,
+      rol: 'cliente',
+      fechaRegistro: new Date().toLocaleDateString()
+    };
+    
+    usuarios.push(nuevoUsuario);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    
+    // Iniciar sesión automáticamente
+    localStorage.setItem('usuarioActual', JSON.stringify(nuevoUsuario));
+    alert('¡Registro exitoso! Bienvenido a PixelPlay Games.');
+    window.location.href = 'index.html';
+  }
+
+  // Función para manejar la actualización del perfil
+  function handlePerfil(form) {
+    const nombre = form.querySelector('#nombrePerfil').value;
+    const email = form.querySelector('#emailPerfil').value;
+    const password = form.querySelector('#passwordPerfil').value;
+    
+    const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual'));
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    
+    // Encontrar y actualizar usuario
+    const usuarioIndex = usuarios.findIndex(u => u.id === usuarioActual.id);
+    
+    if (usuarioIndex !== -1) {
+      usuarios[usuarioIndex].nombre = nombre;
+      usuarios[usuarioIndex].email = email;
+      
+      // Actualizar contraseña solo si se proporcionó una nueva
+      if (password) {
+        usuarios[usuarioIndex].password = password;
+      }
+      
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+      localStorage.setItem('usuarioActual', JSON.stringify(usuarios[usuarioIndex]));
+      
+      alert('Perfil actualizado correctamente.');
+    }
+  }
+
+  // Función para manejar recuperación de contraseña
+  function handleRecuperar(form) {
+    const email = form.querySelector('#emailRecuperar').value;
+    
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuario = usuarios.find(u => u.email === email);
+    
+    if (usuario) {
+      alert('Se han enviado instrucciones para restablecer su contraseña a su correo electrónico.');
+    } else {
+      alert('No se encontró una cuenta asociada a este correo electrónico.');
+    }
+  }
 })();
