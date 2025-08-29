@@ -389,3 +389,63 @@ img{max-width:100%; display:block}
   border-color: #f87171 !important;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23f87171'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 3.6.4.4.4-.4'/%3e%3cpath d='M6 7v2.5'/%3e%3c/svg%3e") !important;
 }
+
+/* estilos para el botón de cerrar sesión */
+.logout-btn {
+  background: linear-gradient(135deg, #f87171, #ef4444) !important;
+  border: none !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+  font-size: 0.875rem !important;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+.user-welcome {
+  color: var(--text);
+  margin-right: 1rem;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.admin-btn {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  border: none !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+  font-size: 0.875rem !important;
+  text-decoration: none !important;
+  display: none;
+}
+
+.admin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3) !important;
+  color: white !important;
+}
+
+/* ajustes para la barra de navegación de usuario */
+#navUsuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  #navUsuario {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .user-welcome {
+    display: none !important;
+  }
+}

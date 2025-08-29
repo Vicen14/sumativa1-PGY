@@ -221,4 +221,12 @@
       alert('No se encontró una cuenta asociada a este correo electrónico.');
     }
   }
+    // función para cerrar sesión
+  function handleLogout() {
+    localStorage.removeItem('usuarioActual');
+    window.location.href = 'index.html';
+  }
+
+  // hacer la función global para poder usarla desde HTML
+  window.handleLogout = handleLogout;
 })();
