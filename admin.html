@@ -4,113 +4,168 @@
   <meta charset="UTF-8">
   <title>Panel de Administración</title>
   <link rel="stylesheet" href="CSS/styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
 </head>
-<button type="button" class="btn logout-btn btn-sm mb-3" onclick="handleLogout()">Cerrar sesión</button>
 <body class="bg-custom text-dark container py-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="text-center text-primary mb-0">Panel de Administración</h2>
-    <a href="index.html" class="btn btn-outline-primary btn-sm">Volver al inicio</a>
+    <div class="d-flex gap-2">
+      <a href="index.html" class="btn btn-outline-primary btn-sm">Inicio</a>
+      <button type="button" class="btn logout-btn btn-sm" onclick="handleLogout()">Cerrar sesión</button>
+    </div>
   </div>
-  
-  <div class="alert alert-info">
-    <strong>Funcionalidades de administrador:</strong> Desde aquí puedes gestionar usuarios, productos y categorías.
-  </div>
-  
-  <div class="row">
-    <!-- Gestión de usuarios -->
-    <div class="col-md-6 mb-4">
-      <div class="card h-100">
-        <div class="card-header bg-primary text-white">
-          <h5 class="card-title mb-0">Gestión de Usuarios</h5>
+
+  <!-- Pestañas -->
+  <ul class="nav nav-tabs mb-3" id="adminTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab">Usuarios</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="productos-tab" data-bs-toggle="tab" data-bs-target="#productos" type="button" role="tab">Productos</button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <!-- Usuarios -->
+    <div class="tab-pane fade show active" id="usuarios" role="tabpanel">
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Gestión de usuarios</h5>
+          <button id="btnNuevoUsuario" class="btn btn-sm btn-primary">Nuevo usuario</button>
         </div>
-        <div class="card-body">
-          <p class="card-text">Administra los usuarios registrados en el sistema, modifica sus roles y gestiona sus permisos.</p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Ver listado de usuarios</li>
-            <li class="list-group-item">Modificar roles (cliente/administrador)</li>
-            <li class="list-group-item">Eliminar usuarios</li>
-          </ul>
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-primary w-100" disabled>Gestionar Usuarios</button>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-sm mb-0" id="tablaUsuarios">
+              <thead class="table-light">
+                <tr>
+                  <th style="width:70px">ID</th>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th style="width:140px">Rol</th>
+                  <th style="width:190px" class="text-end">Acciones</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    
-    <!-- Gestión de productos -->
-    <div class="col-md-6 mb-4">
-      <div class="card h-100">
-        <div class="card-header bg-success text-white">
-          <h5 class="card-title mb-0">Gestión de Productos</h5>
+
+    <!-- Productos -->
+    <div class="tab-pane fade" id="productos" role="tabpanel">
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Catálogo de productos</h5>
+          <button id="btnNuevoProducto" class="btn btn-sm btn-primary">Nuevo producto</button>
         </div>
-        <div class="card-body">
-          <p class="card-text">Administra el catálogo de videojuegos, añade nuevos productos, modifica existentes o elimina productos.</p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Añadir nuevos videojuegos</li>
-            <li class="list-group-item">Modificar información de productos</li>
-            <li class="list-group-item">Gestionar precios y stock</li>
-          </ul>
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-success w-100" disabled>Gestionar Productos</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="row">
-    <!-- Gestión de categorías -->
-    <div class="col-md-6 mb-4">
-      <div class="card h-100">
-        <div class="card-header bg-info text-white">
-          <h5 class="card-title mb-0">Gestión de Categorías</h5>
-        </div>
-        <div class="card-body">
-          <p class="card-text">Crea y gestiona las categorías de videojuegos disponibles en la tienda.</p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Añadir nuevas categorías</li>
-            <li class="list-group-item">Modificar categorías existentes</li>
-            <li class="list-group-item">Organizar productos por categorías</li>
-          </ul>
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-info w-100" disabled>Gestionar Categorías</button>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Estadísticas -->
-    <div class="col-md-6 mb-4">
-      <div class="card h-100">
-        <div class="card-header bg-warning text-dark">
-          <h5 class="card-title mb-0">Estadísticas y Reportes</h5>
-        </div>
-        <div class="card-body">
-          <p class="card-text">Accede a reportes de ventas, estadísticas de usuarios y análisis del catálogo.</p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Reportes de ventas</li>
-            <li class="list-group-item">Estadísticas de usuarios</li>
-            <li class="list-group-item">Análisis de productos populares</li>
-          </ul>
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-warning w-100" disabled>Ver Reportes</button>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-sm mb-0" id="tablaProductos">
+              <thead class="table-light">
+                <tr>
+                  <th style="width:70px">ID</th>
+                  <th>Producto</th>
+                  <th class="text-end" style="width:140px">Precio</th>
+                  <th class="text-end" style="width:120px">Stock</th>
+                  <th style="width:190px" class="text-end">Acciones</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <script>
-    // Verificar permisos de administrador
-    document.addEventListener('DOMContentLoaded', function() {
-      const usuario = JSON.parse(localStorage.getItem('usuarioActual'));
-      
-      if (!usuario || usuario.rol !== 'administrador') {
-        alert('No tienes permisos para acceder a esta página.');
-        window.location.href = 'index.html';
-      }
-    });
-  </script>
+
+  <!-- Modal Usuario -->
+  <div class="modal fade" id="modalUsuario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="formUsuario">
+        <div class="modal-header">
+          <h5 class="modal-title">Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Rol</label>
+            <select name="rol" class="form-select" required>
+              <option value="cliente">Cliente</option>
+              <option value="administrador">Administrador</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Contraseña (opcional)</label>
+            <input type="password" name="password" class="form-control" placeholder="••••••••">
+            <div class="form-text">Si se deja en blanco, se mantiene la contraseña actual.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Producto -->
+  <div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="formProducto">
+        <div class="modal-header">
+          <h5 class="modal-title">Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Categoría</label>
+            <input type="text" name="categoria" class="form-control" placeholder="Acción, Deportes, Aventura..." required>
+          </div>
+          <div class="row g-3">
+            <div class="col-6">
+              <label class="form-label">Precio (CLP)</label>
+              <input type="number" min="0" step="1" name="precio" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label class="form-label">Stock</label>
+              <input type="number" min="0" step="1" name="stock" class="form-control" required>
+            </div>
+          </div>
+          <div class="mt-3">
+            <label class="form-label">URL de imagen</label>
+            <input type="text" name="imagen" class="form-control" placeholder="img/elden-ring.jpg">
+            <img id="previewImagen" src="" class="mt-2" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;display:block;border:1px solid #eee">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.0.2 JS (sin integrity para evitar bloqueo) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <!-- Lógica Admin -->
+  <script src="js/admin.js"></script>
 </body>
 </html>
