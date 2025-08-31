@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -29,16 +29,27 @@
   </div>
 </nav>
 
-<section class="py-5">
+<section class="py-4">
   <div class="container">
-    <h3 class="mb-3">Deportes</h3>
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+      <h2 class="mb-0">Catálogo de juegos</h2>
+      <input id="buscador" class="form-control w-auto" placeholder="Buscar...">
+      <select id="filtroCategoria" class="form-select w-auto">
+        <option value="all">Todas las categorías</option>
+        <option value="accion">Acción</option>
+        <option value="aventura">Aventura</option>
+        <option value="carreras">Carreras</option>
+        <option value="deportes">Deportes</option>
+        <option value="indie">Indie</option>
+      </select>
+    </div>
     <div class="row g-4" id="grid"></div>
-    <a href="productos.html" class="btn btn-primary mt-4">Ir al catálogo completo</a>
   </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="games.js"></script>
+<script src="validaciones.js"></script>
 <script>
 function renderGrid(items){
   const grid = document.getElementById("grid");
@@ -60,9 +71,20 @@ function renderGrid(items){
   `).join("");
 }
 
+function filtrar(){
+  const q = document.getElementById("buscador").value.toLowerCase();
+  const cat = document.getElementById("filtroCategoria").value;
+  let filtered = GAMES.filter(g=> g.name.toLowerCase().includes(q) || g.desc.toLowerCase().includes(q));
+  if(cat !== "all"){
+    filtered = filtered.filter(g=>g.category.toLowerCase() === cat);
+  }
+  renderGrid(filtered);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  const deportes = GAMES.filter(g => g.category === "deportes");
-  renderGrid(deportes);
+  renderGrid(GAMES);
+  document.getElementById("buscador").addEventListener("input", filtrar);
+  document.getElementById("filtroCategoria").addEventListener("change", filtrar);
 });
 </script>
 </body>

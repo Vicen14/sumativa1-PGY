@@ -1,0 +1,1 @@
+// Funciones de carrito integradas en carrito.html y validaciones.js en esta versión.

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GameStore</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img src="img/logo.png" alt="Logo" width="36" height="36" class="rounded-2 bg-light p-1">
+      <span>GameStore</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navcol">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navcol">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="productos.html">Juegos</a></li>
+        <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+        <li class="nav-item"><a class="nav-link" href="perfil.html">Perfil</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<section class="py-4">
+  <div class="container">
+    <h2>Carrito</h2>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr><th>Juego</th><th>Precio</th><th>Cantidad</th><th>Total</th><th></th></tr>
+        </thead>
+        <tbody id="cart-body"></tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-end gap-3">
+      <h4 class="mb-0">Total: <span id="cart-total">$0</span></h4>
+      <button class="btn btn-success" id="btnPagar">Pagar</button>
+    </div>
+  </div>
+</section>
+<script>
+function getCart(){
+  return JSON.parse(localStorage.getItem("cart")||"[]");
+}
+function saveCart(c){ localStorage.setItem("cart", JSON.stringify(c)); }
+function findGame(id){ return GAMES.find(g=>g.id===id); }
+
+function renderCart(){
+  const body = document.getElementById("cart-body");
+  const cart = getCart();
+  if(cart.length===0){ body.innerHTML = `<tr><td colspan="5" class="text-center text-secondary">Tu carrito está vacío</td></tr>`; }
+  else {
+    body.innerHTML = cart.map(item=>{
+      const g = findGame(item.id);
+      const subtotal = g.price * item.qty;
+      return `
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <img src="${g.cover}" alt="${g.name}" width="64" height="64" class="rounded-3 object-fit-cover">
+              <div>
+                <div class="fw-semibold">${g.name}</div>
+                <div class="text-secondary small">${g.desc}</div>
+              </div>
+            </div>
+          </td>
+          <td>$${g.price.toLocaleString('es-CL')}</td>
+          <td>
+            <div class="input-group input-group-sm" style="max-width: 140px">
+              <button class="btn btn-outline-secondary" onclick="decQty('${g.id}')">-</button>
+              <input class="form-control text-center" value="${item.qty}" readonly>
+              <button class="btn btn-outline-secondary" onclick="incQty('${g.id}')">+</button>
+            </div>
+          </td>
+          <td>$${subtotal.toLocaleString('es-CL')}</td>
+          <td><button class="btn btn-sm btn-outline-danger" onclick="removeItem('${g.id}')">Quitar</button></td>
+        </tr>
+      `;
+    }).join("");
+  }
+  const total = cart.reduce((acc,it)=>acc + (findGame(it.id).price * it.qty), 0);
+  document.getElementById("cart-total").textContent = "$"+ total.toLocaleString('es-CL');
+}
+function addToCart(id){
+  const cart = getCart();
+  const ex = cart.find(i=>i.id===id);
+  if(ex) ex.qty += 1; else cart.push({id, qty:1});
+  saveCart(cart); renderCart();
+}
+function incQty(id){
+  const cart = getCart();
+  const it = cart.find(i=>i.id===id); if(it){ it.qty += 1; saveCart(cart); renderCart(); }
+}
+function decQty(id){
+  const cart = getCart();
+  const it = cart.find(i=>i.id===id); if(it){ it.qty = Math.max(1, it.qty-1); saveCart(cart); renderCart(); }
+}
+function removeItem(id){
+  let cart = getCart().filter(i=>i.id!==id); saveCart(cart); renderCart();
+}
+document.addEventListener("DOMContentLoaded", ()=>{
+  // expose addToCart for other pages too
+  window.addToCart = addToCart;
+  renderCart();
+  document.getElementById("btnPagar").addEventListener("click", ()=>{
+    alert("Pago simulado realizado con éxito. ¡Gracias por tu compra!");
+    localStorage.removeItem("cart");
+    renderCart();
+  });
+});
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="games.js"></script>
+<script src="validaciones.js"></script>
+
+
+</body>
+</html>
