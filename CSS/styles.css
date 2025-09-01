@@ -329,7 +329,7 @@ img{max-width:100%; display:block}
   text-decoration: underline;
 }
 
-/* Estilos específicos para la página de perfil */
+/* estilos específicos para la página de perfil */
 .profile-info {
   background: var(--panel);
   border-radius: var(--radius);
@@ -449,15 +449,6 @@ img{max-width:100%; display:block}
     display: none !important;
   }
 }
-
-
-
-
-
-
-
-
-
 
 #ppg-cart-page {
   color: #f5f7fb; /* texto claro por defecto */
