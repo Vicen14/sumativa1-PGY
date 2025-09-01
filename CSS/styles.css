@@ -622,3 +622,31 @@ img{max-width:100%; display:block}
 .table tbody tr:hover {
   background-color: rgba(13,110,253,0.1); /* azul claro */
 }
+
+/*estilos para el carrito*/
+#ppg-cart-page #ppg-cart-table,
+#ppg-cart-page #ppg-cart-table td,
+#ppg-cart-page #ppg-cart-table th,
+#ppg-cart-page #ppg-cart-table strong,
+#ppg-cart-page #ppg-cart-table .price,
+#ppg-cart-page #ppg-cart-total,
+#ppg-cart-page .product-name,
+#ppg-cart-page .product-price,
+#ppg-cart-page .product-total {
+  color: #ffffff !important;
+}
+
+body#ppg-cart-page,
+body#ppg-cart-page .container,
+body#ppg-cart-page, h1,
+body#ppg-cart-page a.btn-link {
+  color: #ffffff !important;
+}
+#ppg-cart-table tbody tr td {
+  color: #ffffff !important;
+}
+
+#ppg-cart-total {
+  color: #ffffff !important;
+  font-size: 1.5rem;
+}
