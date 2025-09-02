@@ -145,7 +145,7 @@ img{max-width:100%; display:block}
   margin: 0 auto;
 }
 
-/* nuevos estilos para categorías */
+/* nuevos estilos para categorias */
 .category-card {
   height: 100%;
   display: flex;
@@ -222,7 +222,7 @@ img{max-width:100%; display:block}
   }
 }
 
-/* para navegación entre categorías */
+/* para navegación entre categorias */
 .navigation-links {
   margin-top: 2rem;
 }
@@ -239,7 +239,7 @@ img{max-width:100%; display:block}
   color: var(--brand-2);
 }
 
-/* ESTILOS PARA FORMULARIOS */
+/* estilos para los formularios */
 .form-page {
   min-height: 100vh;
   display: flex;
@@ -348,7 +348,7 @@ img{max-width:100%; display:block}
   color: white !important;
 }
 
-/* Estilos para el panel de administración */
+/* estilos para el panel de administración */
 .admin-card {
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -379,7 +379,7 @@ img{max-width:100%; display:block}
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Ajustes para validación de formularios */
+/* ajustes para validación de formularios */
 .was-validated .form-control:valid {
   border-color: #34d399 !important;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2334d399' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") !important;
@@ -390,7 +390,7 @@ img{max-width:100%; display:block}
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23f87171'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 3.6.4.4.4-.4'/%3e%3cpath d='M6 7v2.5'/%3e%3c/svg%3e") !important;
 }
 
-/* estilos para el botón de cerrar sesión */
+/* estilos para el botón de cerrar sesion */
 .logout-btn {
   background: linear-gradient(135deg, #f87171, #ef4444) !important;
   border: none !important;
@@ -431,7 +431,7 @@ img{max-width:100%; display:block}
   color: white !important;
 }
 
-/* ajustes para la barra de navegación de usuario */
+/* ajustes para la barra de navegacion de usuario */
 #navUsuario {
   display: flex;
   align-items: center;
@@ -451,10 +451,10 @@ img{max-width:100%; display:block}
 }
 
 #ppg-cart-page {
-  color: #f5f7fb; /* texto claro por defecto */
+  color: #f5f7fb;
 }
 
-/* Encabezado con logo */
+/* encabezado con logo */
 #ppg-cart-page .ppg-cart-header {
   border-bottom: 1px solid rgba(255,255,255,.08);
   padding-bottom: .5rem;
@@ -471,15 +471,15 @@ img{max-width:100%; display:block}
   filter: drop-shadow(0 4px 12px rgba(0,0,0,.45));
 }
 #ppg-cart-page h1 {
-  color: #6aa8ff; /* azul más visible */
+  color: #6aa8ff;
   font-weight: 800;
 }
 
-/* Tabla */
+/* tabla */
 #ppg-cart-page #ppg-cart-table {
   color: #e9ecf3;
   border-collapse: separate;
-  border-spacing: 0 8px; /* filas separadas estilo "cards" */
+  border-spacing: 0 8px; /* filas separadas estilo cards */
 }
 #ppg-cart-page #ppg-cart-table thead th {
   color: #cbd6ee;
@@ -513,13 +513,13 @@ img{max-width:100%; display:block}
   color: #f5f7fb;
 }
 
-/* Imagen de producto en la tabla */
+/* imagen de producto en la tabla */
 #ppg-cart-page #ppg-cart-table img {
   border-radius: 10px;
   box-shadow: 0 6px 16px rgba(0,0,0,.3);
 }
 
-/* Input de cantidad */
+/* input de cantidad */
 #ppg-cart-page input[type="number"] {
   background: #101826;
   color: #f5f7fb;
@@ -532,7 +532,7 @@ img{max-width:100%; display:block}
   border-color: #6aa8ff;
 }
 
-/* Botón eliminar (la X) */
+/* botón eliminar (la X) */
 #ppg-cart-page .ppg-del {
   background: #dc3545 !important;
   border-radius: 10px !important;
@@ -565,7 +565,7 @@ img{max-width:100%; display:block}
   font-weight: 700;
 }
 
-/* Ajustes responsivos */
+/* ajustes responsivos */
 @media (max-width: 576px) {
   #ppg-cart-page #ppg-cart-table td:first-child {
     display: grid;

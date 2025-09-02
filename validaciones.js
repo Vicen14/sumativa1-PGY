@@ -1,12 +1,12 @@
-// Validaciones de formularios con Bootstrap
+// validaciones de formularios con Bootstrap
 (function() {
   'use strict';
 
-  // Expresiones regulares para validaciones
+  // expresiones regulares para validaciones
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  // Inicializar datos de ejemplo si no existen
+  // inicializar datos de ejemplo si no existen
   if (!localStorage.getItem('usuarios')) {
     const usuariosEjemplo = [
       {
@@ -29,28 +29,28 @@
     localStorage.setItem('usuarios', JSON.stringify(usuariosEjemplo));
   }
 
-  // Seleccionar todos los formularios que necesitan validación
+  // seleccionar todos los formularios que necesitan validacion
   const forms = document.querySelectorAll('.needs-validation');
 
-  // Iterar sobre cada formulario
+  // iterar sobre cada formulario
   Array.from(forms).forEach(form => {
     form.addEventListener('submit', event => {
-      // Prevenir el envío por defecto
+      // prevenir el envio por defecto
       event.preventDefault();
       event.stopPropagation();
 
       let isFormValid = true;
 
-      // --- Validación para el formulario de Registro ---
+      // validacion para el formulario de registro ---
       if (form.id === 'formRegistro') {
         const password = form.querySelector('#password');
         const confirmPassword = form.querySelector('#confirmPassword');
 
-        // 1. Validar formato de la contraseña
+        // validar formato de la contraseña
         if (!passRegex.test(password.value)) {
           password.classList.add('is-invalid');
           password.classList.remove('is-valid');
-          // Cambiar mensaje de error
+          // cambiar mensaje de error
           password.nextElementSibling.textContent = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo (@$!%*?&).';
           isFormValid = false;
         } else {
@@ -58,22 +58,22 @@
           password.classList.add('is-valid');
         }
 
-        // 2. Validar que las contraseñas coincidan
+        // validar que las contraseñas coincidan
         if (password.value !== confirmPassword.value) {
           confirmPassword.classList.add('is-invalid');
           confirmPassword.classList.remove('is-valid');
           confirmPassword.nextElementSibling.textContent = 'Las contraseñas no coinciden.';
           isFormValid = false;
-        } else if (password.value) { // Solo validar si la primera contraseña es válida
+        } else if (password.value) { // solo validar si la primera contraseña es valida
           confirmPassword.classList.remove('is-invalid');
           confirmPassword.classList.add('is-valid');
         }
       }
       
-      // --- Validación de contraseña en el formulario de Perfil (si se ingresa una nueva) ---
+      // validación de contraseña en el formulario de Perfil (si se ingresa una nueva)
       if (form.id === 'formPerfil') {
         const passwordPerfil = form.querySelector('#passwordPerfil');
-        // La contraseña es opcional, pero si se escribe, debe ser válida
+        // la contraseña es opcional pero si se escribe debe ser valida
         if (passwordPerfil.value && !passRegex.test(passwordPerfil.value)) {
             passwordPerfil.classList.add('is-invalid');
             passwordPerfil.classList.remove('is-valid');
@@ -88,7 +88,7 @@
         }
       }
 
-      // --- Validación genérica para campos requeridos y formato de email ---
+      // --- validacion generica para campos requeridos y formato de email ---
       const inputs = form.querySelectorAll('input[required]');
       inputs.forEach(input => {
         if (!input.value) {
@@ -105,9 +105,9 @@
         }
       });
 
-      // Si el formulario es válido, se puede proceder con el envío (simulado aquí)
+      // si el formulario es valido, se puede proceder con el envio (simulado aquí)
       if (isFormValid) {
-        // Manejar el envío según el tipo de formulario
+        // manejar el envio según el tipo de formulario
         if (form.id === 'formlogin') {
           handleLogin(form);
         } else if (form.id === 'formRegistro') {
@@ -124,12 +124,12 @@
          console.log('El formulario contiene errores.');
       }
 
-      // Añadir la clase de Bootstrap para mostrar los estilos de feedback
+      // añadir la clase de Bootstrap para mostrar los estilos de feedback
       form.classList.add('was-validated');
     }, false);
   });
 
-  // Función para manejar el inicio de sesión
+  // funcion para manejar el inicio de sesion
   function handleLogin(form) {
     const email = form.querySelector('#emailLogin').value;
     const password = form.querySelector('#passwordLogin').value;
@@ -138,7 +138,7 @@
     const usuario = usuarios.find(u => u.email === email && u.password === password);
     
     if (usuario) {
-      // Guardar usuario en sesión
+      // guardar usuario en sesión
       localStorage.setItem('usuarioActual', JSON.stringify(usuario));
       alert(`¡Bienvenido ${usuario.nombre}!`);
       window.location.href = 'index.html';
@@ -147,7 +147,7 @@
     }
   }
 
-  // Función para manejar el registro
+  // funcion para manejar el registro
   function handleRegistro(form) {
     const nombre = form.querySelector('#nombre').value;
     const email = form.querySelector('#email').value;
@@ -155,13 +155,13 @@
     
     const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
     
-    // Verificar si el email ya existe
+    // verificar si el email ya existe
     if (usuarios.some(u => u.email === email)) {
       alert('Este correo electrónico ya está registrado.');
       return;
     }
     
-    // Crear nuevo usuario (por defecto como cliente)
+    // crear nuevo usuario (por defecto como cliente)
     const nuevoUsuario = {
       id: usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1,
       nombre,
@@ -174,13 +174,13 @@
     usuarios.push(nuevoUsuario);
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
     
-    // Iniciar sesión automáticamente
+    // iniciar sesión automaaticamente
     localStorage.setItem('usuarioActual', JSON.stringify(nuevoUsuario));
     alert('¡Registro exitoso! Bienvenido a PixelPlay Games.');
     window.location.href = 'index.html';
   }
 
-  // Función para manejar la actualización del perfil
+  // funcion para manejar la actualización del perfil
   function handlePerfil(form) {
     const nombre = form.querySelector('#nombrePerfil').value;
     const email = form.querySelector('#emailPerfil').value;
@@ -189,14 +189,14 @@
     const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual'));
     const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
     
-    // Encontrar y actualizar usuario
+    // encontrar y actualizar usuario
     const usuarioIndex = usuarios.findIndex(u => u.id === usuarioActual.id);
     
     if (usuarioIndex !== -1) {
       usuarios[usuarioIndex].nombre = nombre;
       usuarios[usuarioIndex].email = email;
       
-      // Actualizar contraseña solo si se proporcionó una nueva
+      // actualizar contraseña solo si se hay una nueva
       if (password) {
         usuarios[usuarioIndex].password = password;
       }
@@ -208,7 +208,7 @@
     }
   }
 
-  // Función para manejar recuperación de contraseña
+  // funcion para manejar recuperacion de contraseña
   function handleRecuperar(form) {
     const email = form.querySelector('#emailRecuperar').value;
     
