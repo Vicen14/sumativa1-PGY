@@ -55,7 +55,7 @@
   
   <script src="validaciones.js" defer></script>
   <script>
-    // Cargar datos del usuario actual
+    // cargar datos del usuario actual
     document.addEventListener('DOMContentLoaded', function() {
       const usuario = JSON.parse(localStorage.getItem('usuarioActual'));
       
@@ -64,13 +64,13 @@
         return;
       }
       
-      // Mostrar información del usuario
+      // mostrar información del usuario
       document.getElementById('nombrePerfil').value = usuario.nombre || '';
       document.getElementById('emailPerfil').value = usuario.email || '';
       document.getElementById('tipoUsuario').textContent = usuario.rol === 'administrador' ? 'Administrador' : 'Cliente';
       document.getElementById('fechaRegistro').textContent = usuario.fechaRegistro || 'No disponible';
       
-      // Si es administrador, añadir opciones adicionales
+      // si es administrador, añadir opciones adicionales
       if (usuario.rol === 'administrador') {
         const adminOptions = document.createElement('div');
         adminOptions.className = 'mt-3';
